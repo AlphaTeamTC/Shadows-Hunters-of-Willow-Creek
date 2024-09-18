@@ -1,0 +1,21 @@
+Credits
+
+Kevin Iglesias
+ANIMATION
+https://assetstore.unity.com/packages/3d/animations/basic-motions-free-154271#content
+
+Manuel Wieser
+ELVEN BOW
+https://assetstore.unity.com/packages/3d/props/weapons/elven-long-bow-17728
+
+crismas
+DAGGER
+https://assetstore.unity.com/packages/3d/props/weapons/dagger-69460
+
+Seaside Studios
+VFX and Particles
+https://assetstore.unity.com/packages/vfx/all-in-1-vfx-toolkit-206665
+
+Astrofish Games
+Dungeon
+https://assetstore.unity.com/packages/3d/environments/dungeons/detailed-medieval-dungeons-230973
