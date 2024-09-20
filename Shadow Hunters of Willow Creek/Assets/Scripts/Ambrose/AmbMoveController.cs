@@ -11,23 +11,25 @@ public class AmbMoveController : MonoBehaviour
 
     [Header("Movement Settings")]
     private float movementSpeed = 5f;
-    private float jumpHeight = 1f;
-    private float gravity = 9.81f;
-    private float verticalVelocity;
+    private float jumpHeight = 2.5f;
+    private float gravity = 18f;
+    public float verticalVelocity;
     public float rotationSpeed;
+    public float slopeForce = 5f;
+    public float slopeForceLenght = 1.5f;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponentInParent<CharacterController>();
     }
 
     // Functions
-    public void Movement(float speed, Vector3 direction)
+    public void Movement(float speed, Vector3 direction, RaycastHit underThePlayer)
     {
-        GroundMovement(speed, direction);
+        GroundMovement(speed, direction, underThePlayer);
     }
 
-    public void GroundMovement(float speed, Vector3 direction)
+    public void GroundMovement(float speed, Vector3 direction, RaycastHit underThePlayer)
     {
 
         Vector3 movementDirection = direction * speed;
@@ -35,6 +37,12 @@ public class AmbMoveController : MonoBehaviour
         movementDirection *= movementSpeed;
 
         movementDirection.y = verticalVelocity;
+
+
+        if (OnSlope(underThePlayer) && movementDirection.y <= 0)
+        {
+            movementDirection.y *= slopeForce * speed;
+        }
 
         characterController.Move(movementDirection * Time.deltaTime);
 
@@ -48,6 +56,7 @@ public class AmbMoveController : MonoBehaviour
         }
     }
 
+    
     public void JumpVerticalVelocity()
     {
         verticalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
@@ -57,11 +66,21 @@ public class AmbMoveController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            verticalVelocity = -1f;
+            verticalVelocity = -0.4f;
         }
         else
         {
             verticalVelocity = verticalVelocity - gravity * Time.deltaTime;
         }
+    }
+
+    public bool OnSlope(RaycastHit hit)
+    {
+        if (hit.normal != Vector3.up)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
