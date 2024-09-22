@@ -21,8 +21,32 @@ public class AmbAnimationController : MonoBehaviour
         animator.SetFloat("ySpeed", speed);
     }
 
+    public void Falling()
+    {
+        animator.SetBool("isFalling", true);
+    }
+
+    public void FallToStandAnimation()
+    {
+        animator.SetBool("isLanding", true);
+    }
+
+    public void Crouching()
+    {
+        animator.SetBool("isCrouching", true);
+
+    }
+
+    public void Standing()
+    {
+        animator.SetBool("isCrouching", false);
+
+    }
     public void Jump()
     {
         animator.SetBool("isJumping", true);
+
     }
 }
+
+

@@ -8,6 +8,9 @@ public class AmbAnimationReset : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("isJumping", false);
+        animator.SetBool("isFalling", false);
+        animator.SetBool("isLanding", false);
+        animator.GetComponent<AmbInputController>().doingAFullAction = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
