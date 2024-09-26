@@ -8,7 +8,7 @@ public class ProximityAnim : MonoBehaviour
     public Transform player;
 
     public float rotationAngle;
-    private float triggerDistance = 3.0f;
+    private float triggerDistance = 4.0f;
     private bool isNear = false;
     private Quaternion originalRotation;
     
@@ -27,7 +27,6 @@ public class ProximityAnim : MonoBehaviour
         {
             isNear = true;
             RotateNPC();
-            animator.Play(idleAnimation);
             animator.SetTrigger("nearPlayer");
         }
         else if (distanceToPlayer > triggerDistance && isNear)
@@ -35,7 +34,6 @@ public class ProximityAnim : MonoBehaviour
             isNear = false;
             animator.ResetTrigger("nearPlayer");
             ResetNPCRotation();
-            animator.Play(actionAnimation);
             animator.SetTrigger("farPlayer");
         }
     }

@@ -7913,11 +7913,11 @@ PrefabInstance:
     - target: {fileID: 3375266980394385428, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
-      objectReference: {fileID: 1874462832}
+      objectReference: {fileID: 0}
     - target: {fileID: 3678812198928233010, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1874462832}
+      objectReference: {fileID: 195044209}
     - target: {fileID: 4977892632273419132, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_Name
       value: Alya
@@ -7968,19 +7968,19 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e40d10be2b105544fb0be9ba4098c6c8, type: 2}
     - target: {fileID: 8706659146373803045, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99862355
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8706659146373803045, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.015830703
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8706659146373803045, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.04884726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8706659146373803045, guid: 8ef25613651470c4ba20edd03503797b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.01069499
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14654,30 +14654,30 @@ PrefabInstance:
     - target: {fileID: 2458544634701709186, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1874462832}
+      objectReference: {fileID: 195044209}
     - target: {fileID: 3893302307872325359, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
-      objectReference: {fileID: 1874462832}
+      objectReference: {fileID: 0}
     - target: {fileID: 4087003533732759471, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_Name
       value: Astor
       objectReference: {fileID: 0}
     - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9944298
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.01980618
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10118879
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.021860154
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7504401430949356112, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_Controller
