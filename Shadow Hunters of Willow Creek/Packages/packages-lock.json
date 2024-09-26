@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.soupday.cc3_unity_tools": {
-      "version": "file:C:/Users/klaus/OneDrive/Escritorio/cc_unity_tools_3D-1.6.3/cc_unity_tools_3D-1.6.3",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.cinemachine": {
       "version": "2.10.1",
       "depth": 0,
