@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class AmbInputController : MonoBehaviour
@@ -25,6 +26,7 @@ public class AmbInputController : MonoBehaviour
     public bool isJumping = false;
     public bool isDead = false;
 
+
     [Header("Statistics")]
     Vector3 forwardDirection;
     Vector3 momentumDirection;
@@ -32,6 +34,11 @@ public class AmbInputController : MonoBehaviour
 
     private RaycastHit underThePlayer;
     private bool isGroundNear;
+
+    [Header("Interactions")]
+    private Vector3 interactSource;
+    private float interactRadius = 1.7f;
+
 
 
 
@@ -42,15 +49,18 @@ public class AmbInputController : MonoBehaviour
         // Lock the cursor to the center of the screen
         Cursor.lockState = CursorLockMode.Locked;
 
+
         // Get other scripts
         characterController = GetComponentInParent<CharacterController>();
         pMC = GetComponent<AmbMoveController>();
         pAC = GetComponent<AmbAnimationController>();
         pS = GetComponent<AmbStatistics>();
+
     }
 
     void Update()
     {
+
         // Receives the inputs from the WASD
         InputManagement();
 
@@ -66,7 +76,11 @@ public class AmbInputController : MonoBehaviour
         // Acts as gravity for the player
         pMC.FallVerticalVelocity();
 
-
+        // When pressing Intro, will check if there is an interactable and activate it
+        if (Input.GetKeyDown(KeyCode.C)) {
+            checkForInteractables();
+        }
+        
         // If the character is in the ground, it can jump
         if (Input.GetKey(KeyCode.Space) && characterController.isGrounded)
         {
@@ -110,7 +124,7 @@ public class AmbInputController : MonoBehaviour
         // If the is running 
         if (Input.GetKey(KeyCode.LeftShift) && !isCrouching)
         {
-            pMC.Movement(2.5f, forwardDirection, underThePlayer);
+            pMC.Movement(pS.Speed,2.5f, forwardDirection, underThePlayer);
             pAC.setAnimation(getMovingValue() * 2);
             momentumSpeed = 2f;
         }
@@ -118,7 +132,7 @@ public class AmbInputController : MonoBehaviour
         // If the is walking or standing still
         else
         {
-            pMC.Movement(1f, forwardDirection, underThePlayer);
+            pMC.Movement(pS.Speed,1f, forwardDirection, underThePlayer);
             pAC.setAnimation(getMovingValue());
             momentumSpeed = 1f;
         }
@@ -144,7 +158,7 @@ public class AmbInputController : MonoBehaviour
     }
 
     // Stores the distance to the ground
-    public void CalculateRaycast()
+    private void CalculateRaycast()
     {
         isGroundNear = Physics.Raycast(transform.position + Vector3.up * 0.05f, Vector3.down, out underThePlayer, characterController.height / 2 * 1.2f);
     }
@@ -174,11 +188,11 @@ public class AmbInputController : MonoBehaviour
     }
 
     // An event called by the animation that sets the speed and direction for a jump
-    public void JumpAction()
+    private void JumpAction()
     {
         isFalling = true;
         pMC.JumpVerticalVelocity();
-        pMC.Movement(momentumSpeed, momentumDirection, underThePlayer);
+        pMC.Movement(pS.Speed, momentumSpeed, momentumDirection, underThePlayer);
     }
 
     // If the character takes damage it should update data and play animation
@@ -197,6 +211,25 @@ public class AmbInputController : MonoBehaviour
     // If the character heals the statistics should update
     public void Heal(float health){
         pS.Heal(health);
+    }
+
+    private void checkForInteractables(){
+        // Get the player's position
+        interactSource = transform.position + new Vector3(0,1,0);
+
+        // Use Physics.OverlapSphere to find colliders within the specified radius
+        Collider[] hitColliders = Physics.OverlapSphere(interactSource, interactRadius);
+
+        // Search for the first object which is an Interactable
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.TryGetComponent(out IInteractable interactObj)) {
+                // Call its interaction method
+                interactObj.Interact();
+                // End searching after the first one
+                return;
+            }
+        }
     }
 }
 

@@ -14655,34 +14655,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 195044209}
-    - target: {fileID: 3893302307872325359, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_Sources.Array.data[0].sourceTransform
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4087003533732759471, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_Name
       value: Astor
       objectReference: {fileID: 0}
-    - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7133036078417985914, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7504401430949356112, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d110c0268e231674488be50c323065e0, type: 2}
     - target: {fileID: 8432583131391729251, guid: 07a53ab6bcdde1f4f83ad6ad606a0ad9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -35.18

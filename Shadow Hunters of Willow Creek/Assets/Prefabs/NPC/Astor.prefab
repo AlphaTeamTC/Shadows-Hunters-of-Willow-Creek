@@ -1116,7 +1116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3217906458725070618}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.012658079, y: 0.014034637, z: -0.0034327991, w: 0.9998155}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.120482005, z: 0}
   m_LocalScale: {x: 1, y: 1.0000037, z: 1.0000037}
   m_ConstrainProportionsScale: 0
@@ -1366,6 +1366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8432583131391729251}
   - component: {fileID: 2458544634701709186}
+  - component: {fileID: 5949340643171783402}
   m_Layer: 0
   m_Name: Astor
   m_TagString: Untagged
@@ -1406,6 +1407,29 @@ MonoBehaviour:
   rotationAngle: -90
   idleAnimation: HammerWork
   actionAnimation: Idle
+--- !u!136 &5949340643171783402
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087003533732759471}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &4131709340362790775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +2997,7 @@ Animator:
   m_GameObject: {fileID: 9114439207255050881}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 83941278c8dc2024b978e3a89e8e1adb, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6986494e17193cd4a95475f8b061c7e9, type: 2}
+  m_Controller: {fileID: 9100000, guid: d110c0268e231674488be50c323065e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
