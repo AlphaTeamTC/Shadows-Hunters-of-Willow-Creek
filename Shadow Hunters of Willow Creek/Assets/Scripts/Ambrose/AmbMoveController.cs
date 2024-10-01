@@ -8,7 +8,6 @@ public class AmbMoveController : MonoBehaviour
     private CharacterController characterController;
 
     [Header("Movement Settings")]
-    private float movementSpeed = 5f;
     private float jumpHeight = 1.8f;
     private float gravity = 18f;
     public float verticalVelocity;
@@ -24,20 +23,20 @@ public class AmbMoveController : MonoBehaviour
     // Functions
 
     // Moves the Character Controller in the direction and strengt
-    public void Movement(float speed, Vector3 direction, RaycastHit underThePlayer)
+    public void Movement(float charSpeed, float actionSpeed, Vector3 direction, RaycastHit underThePlayer)
     {
-        GroundMovement(speed, direction, underThePlayer);
+        GroundMovement(charSpeed, actionSpeed, direction, underThePlayer);
     }
 
     // Controls the movement when the player is grounded
-    public void GroundMovement(float speed, Vector3 direction, RaycastHit underThePlayer)
+    public void GroundMovement(float charSpeed, float actionSpeed, Vector3 direction, RaycastHit underThePlayer)
     {
 
-        // Movement direction with default speed of the player
-        Vector3 movementDirection = direction * speed;
+        // Movement direction with Speed of the action (running or walking) is added 
+        Vector3 movementDirection = direction * actionSpeed;
 
-        // Speed of the action (running or walking) is added
-        movementDirection *= movementSpeed;
+        // Speed of the character
+        movementDirection *= actionSpeed;
 
         // Gravity value is added
         movementDirection.y = verticalVelocity;
@@ -45,7 +44,7 @@ public class AmbMoveController : MonoBehaviour
         // If the player is on a slope, a greater gravity is needed to mantain the player grounded
         if (OnSlope(underThePlayer) && movementDirection.y <= 0)
         {
-            movementDirection.y *= slopeForce * speed;
+            movementDirection.y *= slopeForce * charSpeed;
         }
 
         // The player moves
