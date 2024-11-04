@@ -57,25 +57,18 @@ public class SubtitlesIntro : MonoBehaviour
         // Add the text array and corresponding duration array to the script
         string[] initialTextArray = new string[]
         {
-            "In the heart of the ancient mountains lies the forgotten town of Willow Creek.",
-            "Its villagers, once a vibrant community, have been plagued by strange occurrences and haunting whispers.",
-            "Their once-grand castle, a symbol of their prosperity, now stands as a chilling reminder of a dark secret.",
-            "Desperate for relief, they've offered a hefty reward to any brave soul willing to enter the castle and exorcise the evil that lurks within.",
-            "Rumors of the castle's haunting have spread far and wide, attracting adventurers and seekers of fortune from across the land.",
-            "Some say the castle is cursed by a powerful sorcerer who was buried alive within its walls.",
-            "Others whisper of a demonic entity that has taken up residence, feeding on the fear and despair of those who dare to enter.",
-            "Despite the terrifying tales, the promise of riches and the chance to rid the town of its torment has lured many into the castle's clutches.",
-            "But none have ever returned, leaving their fate shrouded in mystery.",
-            "A ha ha ha ha Oh, new fools seeking to enter my domain...",
-            "How naive you are. You think you can conquer the darkness that dwells within these walls?",
-            "You have no idea what you're truly facing. The castle is my prison, but it is also my fortress.",
-            "Those who have entered before you have met their doom, and you will be no different."
+            "Willow Creek, once a kingdom of peace and light, where life thrived under the watchful eyes of a benevolent ruler.",
+            "But ambition, born from love and fear, turned its fate.",
+            "A young king, desperate to save his queen, unleashed an ancient force—one that should have remained sealed.",
+            "Now, the castle stands as a tomb of his own making, a prison of corrupted magic and haunting shadows.",
+            "What was once hope has become a nightmare, and the king, a prisoner of his own curse.",
+            "Today, the fate of Willow Creek rests in the hands of those brave enough to face the darkness and reclaim the light."
         };
 
         // Create a duration array with individual durations for each subtitle
         float[] initialDurationArray = new float[]
         {
-            5f, 6.5f, 8f, 9.5f, 9f, 6.5f, 9f, 9.5f, 4.25f, 4.25f, 5f, 6.5f, 5.5f
+            5f, 6.5f, 8f, 9.5f, 9f, 6.5f
         };
 
         ShowSubtitle(initialTextArray, initialDurationArray);
