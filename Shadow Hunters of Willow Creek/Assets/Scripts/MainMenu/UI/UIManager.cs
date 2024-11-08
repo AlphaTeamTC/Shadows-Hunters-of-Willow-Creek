@@ -15,6 +15,7 @@ namespace MainMenu.UI
         [SerializeField, Space] private CanvasGroup _joinedRoomCanvasGroup;
         [SerializeField] private TMP_Text _joinedRoomName;
         [SerializeField, Space] private CanvasGroup _createRoomCanvasGroup;
+        [SerializeField] private CanvasGroup _roomListCanvasGroup;
         [SerializeField, Space] private CanvasGroup _loadingCanvasGroup;
         [SerializeField] private TMP_Text _loadingText;
         [SerializeField, Space] private CanvasGroup _errorCanvasGroup;
@@ -59,7 +60,7 @@ namespace MainMenu.UI
         /// <param name="canvasGroup"></param>
         /// <param name="active"></param>
         /// <param name="duration"></param>
-        public void FadeCanvasGroup(CanvasGroup canvasGroup, bool active, float duration = 0.4f)
+        public void FadeCanvasGroup(CanvasGroup canvasGroup, bool active, float duration = 0.3f)
         {
             float targetAlpha = active ? 1 : 0;
 
