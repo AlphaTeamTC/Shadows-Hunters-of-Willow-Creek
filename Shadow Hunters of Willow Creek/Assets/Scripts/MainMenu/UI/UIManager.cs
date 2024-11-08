@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace MainMenu.UI
@@ -7,12 +8,17 @@ namespace MainMenu.UI
     /// </summary>
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private CanvasGroup _backgroundImageCanvasGroup;
+        [SerializeField] private CanvasGroup _gameTitleCanvasGroup;
         [SerializeField, Space] private CanvasGroup _mainMenuCanvasGroup;
-        [SerializeField] private CanvasGroup _settingsCanvasGroup;
-        [SerializeField] private CanvasGroup _roomOptionsCanvasGroup;
-        [SerializeField] private CanvasGroup _joinRoomCanvasGroup;
+        [SerializeField, Space] private CanvasGroup _settingsCanvasGroup;
+        [SerializeField, Space] private CanvasGroup _roomOptionsCanvasGroup;
+        [SerializeField, Space] private CanvasGroup _joinedRoomCanvasGroup;
+        [SerializeField] private TMP_Text _joinedRoomName;
         [SerializeField, Space] private CanvasGroup _createRoomCanvasGroup;
+        [SerializeField, Space] private CanvasGroup _loadingCanvasGroup;
+        [SerializeField] private TMP_Text _loadingText;
+        [SerializeField, Space] private CanvasGroup _errorCanvasGroup;
+        [SerializeField] private TMP_Text _errorText;
 
         // Singletoning the UIManager
         private static UIManager _instance;
@@ -35,19 +41,16 @@ namespace MainMenu.UI
         public delegate void OnLeaveRoom();
         public OnLeaveRoom OnLeaveRoomEvent;
 
-        private void Start()
-        {
-            CanvasSetup();
-        }
-
         public void CanvasSetup()
         {
-            FadeCanvasGroup(_backgroundImageCanvasGroup, true);
-            FadeCanvasGroup(_mainMenuCanvasGroup, true);
+            FadeCanvasGroup(_gameTitleCanvasGroup, true);
+            FadeCanvasGroup(_mainMenuCanvasGroup, false);
             FadeCanvasGroup(_settingsCanvasGroup, false);
             FadeCanvasGroup(_roomOptionsCanvasGroup, false);
-            FadeCanvasGroup(_joinRoomCanvasGroup, false);
+            FadeCanvasGroup(_joinedRoomCanvasGroup, false);
             FadeCanvasGroup(_createRoomCanvasGroup, false);
+            FadeCanvasGroup(_loadingCanvasGroup, false);
+            FadeCanvasGroup(_errorCanvasGroup, false);
         }
 
         /// <summary>
@@ -77,6 +80,73 @@ namespace MainMenu.UI
                     canvasGroup.blocksRaycasts = false;
                 }
             });
+        }
+
+        /// <summary>
+        /// Sets the game title canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetGameTitleCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_gameTitleCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the main menu canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetMainMenuCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_mainMenuCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the settings canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetSettingsCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_settingsCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the room options canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetRoomOptionsCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_roomOptionsCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the join room canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetJoinedRoomCanvasGroup(bool active, string roomName = "")
+        {
+            _joinedRoomName.text = roomName;
+            FadeCanvasGroup(_joinedRoomCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the create room canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetCreateRoomCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_createRoomCanvasGroup, active);
+        }
+
+        public void SetLoadingCanvasGroup(bool active, string loadingText = "Loading...")
+        {
+            _loadingText.text = loadingText;
+            FadeCanvasGroup(_loadingCanvasGroup, active);
+        }
+
+        public void SetErrorCanvasGroup(bool active, string errorText = "Error : ")
+        {
+            _errorText.text = errorText;
+            FadeCanvasGroup(_errorCanvasGroup, active);
         }
     }
 }
