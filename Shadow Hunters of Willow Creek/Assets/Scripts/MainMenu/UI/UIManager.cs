@@ -10,6 +10,7 @@ namespace MainMenu.UI
         [SerializeField] private CanvasGroup _backgroundImageCanvasGroup;
         [SerializeField, Space] private CanvasGroup _mainMenuCanvasGroup;
         [SerializeField] private CanvasGroup _settingsCanvasGroup;
+        [SerializeField] private CanvasGroup _roomOptionsCanvasGroup;
         [SerializeField] private CanvasGroup _joinRoomCanvasGroup;
         [SerializeField, Space] private CanvasGroup _createRoomCanvasGroup;
 
@@ -44,6 +45,7 @@ namespace MainMenu.UI
             FadeCanvasGroup(_backgroundImageCanvasGroup, true);
             FadeCanvasGroup(_mainMenuCanvasGroup, true);
             FadeCanvasGroup(_settingsCanvasGroup, false);
+            FadeCanvasGroup(_roomOptionsCanvasGroup, false);
             FadeCanvasGroup(_joinRoomCanvasGroup, false);
             FadeCanvasGroup(_createRoomCanvasGroup, false);
         }
