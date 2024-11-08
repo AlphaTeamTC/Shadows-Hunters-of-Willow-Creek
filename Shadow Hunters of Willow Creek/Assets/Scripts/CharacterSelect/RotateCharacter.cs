@@ -8,19 +8,16 @@ public class RotateCharacter : MonoBehaviour
     public GameObject Ambrose;
     public GameObject Navi;
     public GameObject Lucius;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    public float speed = 20f;
 
     // Update is called once per frame
     void Update()
     {
-        Fenrir.transform.Rotate(Vector3.up * 10f * Time.deltaTime);
-        Lucius.transform.Rotate(Vector3.up * 10f * Time.deltaTime);
-        Navi.transform.Rotate(Vector3.up * 10f * Time.deltaTime);
-        Ambrose.transform.Rotate(Vector3.up * 10f * Time.deltaTime);
+        Fenrir.transform.Rotate(Vector3.up * speed * Time.deltaTime);
+        Lucius.transform.Rotate(Vector3.up * speed * Time.deltaTime);
+        Navi.transform.Rotate(Vector3.up * speed * Time.deltaTime);
+        Ambrose.transform.Rotate(Vector3.up * speed * Time.deltaTime);
 
     }
 }

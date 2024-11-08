@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AmbMoveController : MonoBehaviour
@@ -10,8 +8,7 @@ public class AmbMoveController : MonoBehaviour
     private CharacterController characterController;
 
     [Header("Movement Settings")]
-    private float movementSpeed = 5f;
-    private float jumpHeight = 2.5f;
+    private float jumpHeight = 1.8f;
     private float gravity = 18f;
     public float verticalVelocity;
     public float rotationSpeed;
@@ -24,30 +21,38 @@ public class AmbMoveController : MonoBehaviour
     }
 
     // Functions
-    public void Movement(float speed, Vector3 direction, RaycastHit underThePlayer)
+
+    // Moves the Character Controller in the direction and strengt
+    public void Movement(float charSpeed, float actionSpeed, Vector3 direction, RaycastHit underThePlayer)
     {
-        GroundMovement(speed, direction, underThePlayer);
+        GroundMovement(charSpeed, actionSpeed, direction, underThePlayer);
     }
 
-    public void GroundMovement(float speed, Vector3 direction, RaycastHit underThePlayer)
+    // Controls the movement when the player is grounded
+    public void GroundMovement(float charSpeed, float actionSpeed, Vector3 direction, RaycastHit underThePlayer)
     {
 
-        Vector3 movementDirection = direction * speed;
+        // Movement direction with Speed of the action (running or walking) is added 
+        Vector3 movementDirection = direction * actionSpeed;
 
-        movementDirection *= movementSpeed;
+        // Speed of the character
+        movementDirection *= actionSpeed;
 
+        // Gravity value is added
         movementDirection.y = verticalVelocity;
 
-
+        // If the player is on a slope, a greater gravity is needed to mantain the player grounded
         if (OnSlope(underThePlayer) && movementDirection.y <= 0)
         {
-            movementDirection.y *= slopeForce * speed;
+            movementDirection.y *= slopeForce * charSpeed;
         }
 
+        // The player moves
         characterController.Move(movementDirection * Time.deltaTime);
 
     }
 
+    // The character rotates on the given direction, usually the forward of the model 
     public void RotateCharacter(Vector3 direction)
     {
         if (direction != Vector3.zero)
@@ -56,12 +61,13 @@ public class AmbMoveController : MonoBehaviour
         }
     }
 
-    
+    // The character jumps by giving it a vertical positive velocity
     public void JumpVerticalVelocity()
     {
         verticalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
     }
 
+    // the gravity is calculated based on if the character is grounded or falling
     public void FallVerticalVelocity()
     {
         if (characterController.isGrounded)
@@ -74,6 +80,7 @@ public class AmbMoveController : MonoBehaviour
         }
     }
 
+    // Calculates the normal vector under the player to determine if it is a slope
     public bool OnSlope(RaycastHit hit)
     {
         if (hit.normal != Vector3.up)
@@ -83,4 +90,6 @@ public class AmbMoveController : MonoBehaviour
 
         return false;
     }
+
+
 }
