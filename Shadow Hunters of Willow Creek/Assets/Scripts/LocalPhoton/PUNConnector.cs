@@ -6,6 +6,7 @@ using MainMenu.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LocalPhoton
 {
@@ -34,7 +35,9 @@ namespace LocalPhoton
             //UIManager.Instance.OnSubmitNicknameEvent += SubmitNickname;
 
             // PunRoomButtonInfo events
-            //PUNRoomButtonInfo.OnJoinRoomEvent += JoinRoom;
+            PUNRoomButtonInfo.OnJoinRoomEvent += JoinRoom;
+
+            DontDestroyOnLoad(gameObject);
 
             // Call the base OnEnable method. It's important to call the base method because it initializes the Photon callbacks
             base.OnEnable();
@@ -46,7 +49,7 @@ namespace LocalPhoton
             UIManager.Instance.OnLeaveRoomEvent -= LeaveRoom;
             //UIManager.Instance.OnSubmitNicknameEvent -= SubmitNickname;
 
-            //PUNRoomButtonInfo.OnJoinRoomEvent -= JoinRoom;
+            PUNRoomButtonInfo.OnJoinRoomEvent -= JoinRoom;
 
             // Call the base OnDisable method. It's important to call the base method because it de-initializes the Photon callbacks
             base.OnDisable();
@@ -84,7 +87,7 @@ namespace LocalPhoton
             PhotonNetwork.AutomaticallySyncScene = true;
 
             Debug.LogFormat($"*** PUNConnector: Connected to the Photon network!");
-            UIManager.Instance.SetLoadingCanvasGroup(true, "Connected to the Photon network! Joining lobby...");
+            UIManager.Instance.SetLoadingCanvasGroup(true, "Connected to game server! Joining lobby...");
             Debug.LogFormat($"*** PUNConnector: Joining lobby...");
             PhotonNetwork.JoinLobby();
         }
@@ -162,7 +165,7 @@ namespace LocalPhoton
         {
             Debug.LogFormat($"*** PUNConnector: Joined room {PhotonNetwork.CurrentRoom.Name}!");
             UIManager.Instance.SetLoadingCanvasGroup(false);
-            UIManager.Instance.SetJoinedRoomCanvasGroup(true, PhotonNetwork.CurrentRoom.Name);
+            SceneManager.LoadScene("Character Select");
 
             /*
             PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
@@ -192,7 +195,6 @@ namespace LocalPhoton
              */
 
             Debug.LogFormat($"*** PUNConnector: Leaving room [{PhotonNetwork.CurrentRoom.Name}]...");
-            UIManager.Instance.SetJoinedRoomCanvasGroup(false);
             UIManager.Instance.SetLoadingCanvasGroup(true, "Leaving room...");
             PhotonNetwork.LeaveRoom();
         }
@@ -222,7 +224,7 @@ namespace LocalPhoton
              * Initially it returns all the rooms in the lobby, then it send the ones that have changed
              */
             Debug.LogFormat("*** PUNConnector: Room list updated!");
-            //RoomCreator.Instance.PopulateRoomList(roomList);
+            RoomCreator.Instance.PopulateRoomList(roomList);
 
             foreach (RoomInfo roomInfo in roomList)
             {
@@ -237,11 +239,9 @@ namespace LocalPhoton
         private void JoinRoom(RoomInfo roomInfo)
         {
             Debug.LogFormat($"*** PUNConnector: Joining room [{roomInfo.Name}]...");
-            /*
             UIManager.Instance.SetLoadingCanvasGroup(true, "Joining room...");
-            UIManager.Instance.SetRoomListCanvasGroup(false);
-            */
             PhotonNetwork.JoinRoom(roomInfo.Name);
+            SceneManager.LoadScene("Character Select");
         }
 
         public override void OnJoinRoomFailed(short returnCode, string message)
@@ -268,7 +268,6 @@ namespace LocalPhoton
 
         public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
         {
-            /*
             Debug.LogFormat($"*** PUNConnector: Player [{newMasterClient.NickName}] is the new master client!");
             if (PhotonNetwork.IsMasterClient)
             {
@@ -278,7 +277,6 @@ namespace LocalPhoton
             {
                 UIManager.Instance.ButtonStartGame.SetActive(false);
             }
-            */
         }
 
         /// <summary>
@@ -297,17 +295,6 @@ namespace LocalPhoton
             #else
                 Application.Quit();
             #endif
-        }
-
-        /// <summary>
-        /// Start the game
-        /// </summary>
-        public void StartGame()
-        {
-            int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
-            int selectedScene = _changeMapBetweenRounds ? UnityEngine.Random.Range(1, sceneCount) : 1;
-
-            PhotonNetwork.LoadLevel(selectedScene);
         }
     }
 }

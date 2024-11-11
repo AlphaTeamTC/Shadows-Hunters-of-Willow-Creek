@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,14 +13,16 @@ namespace MainMenu.UI
         [SerializeField, Space] private CanvasGroup _mainMenuCanvasGroup;
         [SerializeField, Space] private CanvasGroup _settingsCanvasGroup;
         [SerializeField, Space] private CanvasGroup _roomOptionsCanvasGroup;
-        [SerializeField, Space] private CanvasGroup _joinedRoomCanvasGroup;
-        [SerializeField] private TMP_Text _joinedRoomName;
         [SerializeField, Space] private CanvasGroup _createRoomCanvasGroup;
-        [SerializeField] private CanvasGroup _roomListCanvasGroup;
+        [SerializeField] private TMP_InputField _createdRoomNameInputField;
+        [SerializeField, Space] private CanvasGroup _roomListCanvasGroup;
         [SerializeField, Space] private CanvasGroup _loadingCanvasGroup;
         [SerializeField] private TMP_Text _loadingText;
         [SerializeField, Space] private CanvasGroup _errorCanvasGroup;
         [SerializeField] private TMP_Text _errorText;
+        [SerializeField, Space] private GameObject _buttonStartGame;
+
+        public GameObject ButtonStartGame => _buttonStartGame;
 
         // Singletoning the UIManager
         private static UIManager _instance;
@@ -48,8 +51,8 @@ namespace MainMenu.UI
             FadeCanvasGroup(_mainMenuCanvasGroup, false);
             FadeCanvasGroup(_settingsCanvasGroup, false);
             FadeCanvasGroup(_roomOptionsCanvasGroup, false);
-            FadeCanvasGroup(_joinedRoomCanvasGroup, false);
             FadeCanvasGroup(_createRoomCanvasGroup, false);
+            FadeCanvasGroup(_roomListCanvasGroup, false);
             FadeCanvasGroup(_loadingCanvasGroup, false);
             FadeCanvasGroup(_errorCanvasGroup, false);
         }
@@ -120,16 +123,6 @@ namespace MainMenu.UI
         }
 
         /// <summary>
-        /// Sets the join room canvas group.
-        /// </summary>
-        /// <param name="active"></param>
-        public void SetJoinedRoomCanvasGroup(bool active, string roomName = "")
-        {
-            _joinedRoomName.text = roomName;
-            FadeCanvasGroup(_joinedRoomCanvasGroup, active);
-        }
-
-        /// <summary>
         /// Sets the create room canvas group.
         /// </summary>
         /// <param name="active"></param>
@@ -138,16 +131,73 @@ namespace MainMenu.UI
             FadeCanvasGroup(_createRoomCanvasGroup, active);
         }
 
+        /// <summary>
+        /// Sets the room list canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetRoomListCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_roomListCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Sets the loading canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        /// <param name="loadingText"></param>
         public void SetLoadingCanvasGroup(bool active, string loadingText = "Loading...")
         {
             _loadingText.text = loadingText;
             FadeCanvasGroup(_loadingCanvasGroup, active);
         }
 
+        /// <summary>
+        /// Sets the error canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        /// <param name="errorText"></param>
         public void SetErrorCanvasGroup(bool active, string errorText = "Error : ")
         {
             _errorText.text = errorText;
             FadeCanvasGroup(_errorCanvasGroup, active);
+        }
+
+        /// <summary>
+        /// Action when the create room button is clicked
+        /// </summary>
+        public void ButtonOnCreateRoomClicked()
+        {
+            if (String.IsNullOrEmpty(_createdRoomNameInputField.text))
+            {
+                Debug.LogErrorFormat($"*** UIManager: Room Name is empty!");
+                return;
+            }
+
+            OnCreateRoomEvent?.Invoke(_createdRoomNameInputField.text);
+        }
+
+        /// <summary>
+        /// Action when the leave room button is clicked
+        /// </summary>
+        public void ButtonLeaveRoomClicked()
+        {
+            OnLeaveRoomEvent?.Invoke();
+        }
+
+        /// <summary>
+        /// Action when the close error on the Error canvas button is clicked
+        /// </summary>
+        public void ButtonCloseErrorCanvasGroup()
+        {
+            FadeCanvasGroup(_errorCanvasGroup, false);
+        }
+
+        /// <summary>
+        /// Clears the room name input field
+        /// </summary>
+        public void ClearRoomNameInputField()
+        {
+            _createdRoomNameInputField.text = String.Empty;
         }
     }
 }
