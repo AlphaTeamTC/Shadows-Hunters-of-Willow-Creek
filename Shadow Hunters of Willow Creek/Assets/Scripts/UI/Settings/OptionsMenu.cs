@@ -135,7 +135,7 @@ namespace UI.Settings
             //Resolution
             SetResolution(2);
             //Name
-            setPlayerName("");
+            setPlayerName("User");
         }
 
         /// <summary>
