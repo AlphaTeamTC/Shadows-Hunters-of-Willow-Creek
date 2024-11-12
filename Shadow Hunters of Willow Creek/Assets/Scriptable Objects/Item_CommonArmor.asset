@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0467ee087410d4e941e99a6c6be30b, type: 3}
+  m_Name: Item_CommonArmor
+  m_EditorClassIdentifier: 
+  _itemName: Leather Armor
+  _itemCost: 50
+  _itemDescription: A leather armor that buffs player defense by 1.
+  _itemBuff: 1
+  _itemHasDuration: 0
+  itemRarity: 0
+  _itemSprite: {fileID: 21300000, guid: b39729e5b39bdb349a8fc89027a371c3, type: 3}
