@@ -22,13 +22,8 @@ namespace LocalPhoton
     /// </summary>
     public class PUNConnector : MonoBehaviourPunCallbacks
     {
-        [SerializeField] private bool _changeMapBetweenRounds = true;
-
-        public static bool ChangeMapBetweenRounds { get; set; }
-
         public override void OnEnable()
         {
-            ChangeMapBetweenRounds = _changeMapBetweenRounds;
             // UI manager events
             UIManager.Instance.OnCreateRoomEvent += CreateRoom;
             UIManager.Instance.OnLeaveRoomEvent += LeaveRoom;
@@ -165,21 +160,18 @@ namespace LocalPhoton
         {
             Debug.LogFormat($"*** PUNConnector: Joined room {PhotonNetwork.CurrentRoom.Name}!");
             UIManager.Instance.SetLoadingCanvasGroup(false);
-            SceneManager.LoadScene("Character Select");
+            SceneManager.LoadSceneAsync("Character Select");
 
-            /*
-            PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
-
+            //PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
             // If the player is the master client, show the start game button
             if (PhotonNetwork.IsMasterClient)
             {
-                UIManager.Instance.ButtonStartGame.SetActive(true);
+                //UIManager.Instance.ButtonStartGame.SetActive(true);
             }
             else
             {
-                UIManager.Instance.ButtonStartGame.SetActive(false);
+                //UIManager.Instance.ButtonStartGame.SetActive(false);
             }
-            */
         }
 
         /// <summary>
@@ -269,6 +261,7 @@ namespace LocalPhoton
         public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
         {
             Debug.LogFormat($"*** PUNConnector: Player [{newMasterClient.NickName}] is the new master client!");
+            /*
             if (PhotonNetwork.IsMasterClient)
             {
                 UIManager.Instance.ButtonStartGame.SetActive(true);
@@ -277,6 +270,7 @@ namespace LocalPhoton
             {
                 UIManager.Instance.ButtonStartGame.SetActive(false);
             }
+            */
         }
 
         /// <summary>

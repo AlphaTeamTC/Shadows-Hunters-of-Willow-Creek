@@ -20,9 +20,6 @@ namespace MainMenu.UI
         [SerializeField] private TMP_Text _loadingText;
         [SerializeField, Space] private CanvasGroup _errorCanvasGroup;
         [SerializeField] private TMP_Text _errorText;
-        [SerializeField, Space] private GameObject _buttonStartGame;
-
-        public GameObject ButtonStartGame => _buttonStartGame;
 
         // Singletoning the UIManager
         private static UIManager _instance;
