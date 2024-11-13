@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b8a1f6-4b50-4404-aabe-78cb00884583" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/MedievalSharp-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/MedievalSharp-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Store.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Store.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,7 @@
       <updated>1731282410268</updated>
       <workItem from="1731282414162" duration="9547000" />
       <workItem from="1731339141770" duration="3701000" />
-      <workItem from="1731429475510" duration="4589000" />
+      <workItem from="1731429475510" duration="5962000" />
     </task>
     <servers />
   </component>
