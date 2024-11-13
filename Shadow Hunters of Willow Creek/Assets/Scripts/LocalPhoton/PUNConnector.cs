@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using CharacterSelector.UI;
+
 //using LocalPhoton.MainMenu;
 using MainMenu.UI;
 using Photon.Pun;
@@ -107,6 +109,9 @@ namespace LocalPhoton
                 UIManager.Instance.SetPlayerNameCanvasGroup(true);
             }
             */
+
+            // Assign a random nickname to the player
+            PhotonNetwork.NickName = "Player" + UnityEngine.Random.Range(0, 1000).ToString("0000");
         }
 
         /// <summary>
@@ -159,18 +164,44 @@ namespace LocalPhoton
         public override void OnJoinedRoom()
         {
             Debug.LogFormat($"*** PUNConnector: Joined room {PhotonNetwork.CurrentRoom.Name}!");
-            UIManager.Instance.SetLoadingCanvasGroup(false);
+
             SceneManager.LoadSceneAsync("Character Select");
 
-            //PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
+            PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
+
             // If the player is the master client, show the start game button
             if (PhotonNetwork.IsMasterClient)
             {
-                //UIManager.Instance.ButtonStartGame.SetActive(true);
+                UIManagerCharacterSelector.Instance.ButtonStartGame.SetActive(true);
             }
             else
             {
-                //UIManager.Instance.ButtonStartGame.SetActive(false);
+                UIManagerCharacterSelector.Instance.ButtonStartGame.SetActive(false);
+            }
+        }
+
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            Debug.LogFormat($"*** PUNConnector: Player {newPlayer.NickName} entered the room!");
+            PlayerCreator.Instance.AddPlayer(newPlayer);
+        }
+
+        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+        {
+            Debug.LogFormat($"*** PUNConnector: Player [{otherPlayer.NickName}] left the room!");
+            PlayerCreator.Instance.RemovePlayer(otherPlayer);
+        }
+
+        public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+        {
+            Debug.LogFormat($"*** PUNConnector: Player [{newMasterClient.NickName}] is the new master client!");
+            if (PhotonNetwork.IsMasterClient)
+            {
+                UIManagerCharacterSelector.Instance.ButtonStartGame.SetActive(true);
+            }
+            else
+            {
+                UIManagerCharacterSelector.Instance.ButtonStartGame.SetActive(false);
             }
         }
 
@@ -244,33 +275,6 @@ namespace LocalPhoton
 
             UIManager.Instance.SetLoadingCanvasGroup(false);
             UIManager.Instance.SetErrorCanvasGroup(true, sb.ToString());
-        }
-
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-        {
-            Debug.LogFormat($"*** PUNConnector: Player {newPlayer.NickName} entered the room!");
-            //PlayerCreator.Instance.AddPlayer(newPlayer);
-        }
-
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-        {
-            Debug.LogFormat($"*** PUNConnector: Player [{otherPlayer.NickName}] left the room!");
-            //PlayerCreator.Instance.RemovePlayer(otherPlayer);
-        }
-
-        public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
-        {
-            Debug.LogFormat($"*** PUNConnector: Player [{newMasterClient.NickName}] is the new master client!");
-            /*
-            if (PhotonNetwork.IsMasterClient)
-            {
-                UIManager.Instance.ButtonStartGame.SetActive(true);
-            }
-            else
-            {
-                UIManager.Instance.ButtonStartGame.SetActive(false);
-            }
-            */
         }
 
         /// <summary>

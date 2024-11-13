@@ -2053,7 +2053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8193bd52ec04d41a1e3e0f83a4b5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeMapBetweenRounds: 1
 --- !u!1 &353364781
 GameObject:
   m_ObjectHideFlags: 0
@@ -9380,7 +9379,6 @@ MonoBehaviour:
   _loadingText: {fileID: 754675301}
   _errorCanvasGroup: {fileID: 107047790}
   _errorText: {fileID: 1132291771}
-  _buttonStartGame: {fileID: 0}
 --- !u!114 &1828080699
 MonoBehaviour:
   m_ObjectHideFlags: 0

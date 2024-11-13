@@ -2,10 +2,13 @@ using UnityEngine;
 
 namespace CharacterSelector.UI
 {
+    /// <summary>
+    /// Class in charge of creating the players in the room.
+    /// </summary>
     public class PlayerCreator : MonoBehaviour
     {
         [SerializeField] private PlayerInfo _playerPrefab;
-        [SerializeField] private Transform _playerParent;
+        [SerializeField] private RectTransform _playerParent;
 
         // Singletoning the PlayerCreator
         private static PlayerCreator _instance;
@@ -25,7 +28,6 @@ namespace CharacterSelector.UI
                     go.AddComponent<PlayerCreator>();
                     _instance = go.GetComponent<PlayerCreator>();
                 }
-
                 return _instance;
             }
         }
@@ -79,7 +81,7 @@ namespace CharacterSelector.UI
                 if (child.GetComponent<PlayerInfo>().PlayerName == player.NickName)
                 {
                     Destroy(child.gameObject);
-                    break;
+                    return;
                 }
             }
         }

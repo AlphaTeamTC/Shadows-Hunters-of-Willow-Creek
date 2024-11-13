@@ -13,6 +13,19 @@ namespace CharacterSelector.UI
 
         public GameObject ButtonStartGame => _buttonStartGame;
 
+        private static UIManagerCharacterSelector _instance;
+        public static UIManagerCharacterSelector Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<UIManagerCharacterSelector>();
+                }
+                return _instance;
+            }
+        }
+
         private void Start()
         {
             PlayerCreator.Instance.CreatePlayersInRoom(PhotonNetwork.PlayerList);
