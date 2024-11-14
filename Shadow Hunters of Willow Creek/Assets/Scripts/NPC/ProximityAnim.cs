@@ -16,7 +16,9 @@ public class ProximityAnim : MonoBehaviour
     public string actionAnimation;
     void Start()
     {
-        originalRotation = transform.rotation; 
+        originalRotation = transform.rotation;
+        // Find the player in the scene
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

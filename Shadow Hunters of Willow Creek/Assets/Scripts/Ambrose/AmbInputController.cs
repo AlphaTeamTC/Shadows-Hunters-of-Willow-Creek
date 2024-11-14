@@ -1,7 +1,9 @@
+using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class AmbInputController : MonoBehaviour
+public class AmbInputController : MonoBehaviourPunCallbacks
 {
 
     [Header("Movement")]
@@ -39,16 +41,14 @@ public class AmbInputController : MonoBehaviour
     private Vector3 interactSource;
     private float interactRadius = 1.7f;
 
-
-
-
     void Start()
     {
+        enabled = photonView.IsMine;
+
         // Set the cursor to be invisible
         Cursor.visible = false;
         // Lock the cursor to the center of the screen
         Cursor.lockState = CursorLockMode.Locked;
-
 
         // Get other scripts
         characterController = GetComponentInParent<CharacterController>();
@@ -56,6 +56,17 @@ public class AmbInputController : MonoBehaviour
         pAC = GetComponent<AmbAnimationController>();
         pS = GetComponent<AmbStatistics>();
 
+        // Get the camera
+        playerCam = Camera.main;
+
+        // Find the cinemachine free look camera
+        GameObject cinemachinePrefab = GameObject.Find("3D Camera");
+        // Set the camera to follow local player
+        if (photonView.IsMine)
+        {
+            cinemachinePrefab.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().Follow = transform;
+            cinemachinePrefab.GetComponentInChildren<Cinemachine.CinemachineFreeLook>().LookAt = transform;
+        }
     }
 
     void Update()

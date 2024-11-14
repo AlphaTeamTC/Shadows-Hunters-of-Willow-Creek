@@ -1628,13 +1628,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 777879325607245127}
-  pMC: {fileID: 0}
-  pAC: {fileID: 0}
+  pMC: {fileID: 4791168627896266284}
+  pAC: {fileID: 1659855905368146033}
+  pS: {fileID: 3200254334539027880}
   playerCam: {fileID: 0}
   isFalling: 0
   doingAFullAction: 0
   isCrouching: 0
   isJumping: 0
+  isDead: 0
 --- !u!114 &1659855905368146033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1679,10 +1681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbar: {fileID: 0}
   energybar: {fileID: 0}
-  maxHealth: 100
-  maxEnergy: 100
-  currentHealth: 0
-  currentEnergy: 0
 --- !u!1 &2013224437651800097
 GameObject:
   m_ObjectHideFlags: 0

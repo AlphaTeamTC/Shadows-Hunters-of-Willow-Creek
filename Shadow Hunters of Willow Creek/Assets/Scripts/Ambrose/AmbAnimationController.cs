@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class AmbAnimationController : MonoBehaviour
+public class AmbAnimationController : MonoBehaviourPunCallbacks
 {
     [Header("References")]
     private Animator animator;
@@ -9,6 +10,8 @@ public class AmbAnimationController : MonoBehaviour
     // Initialize the animator and initial values
     void Start()
     {
+        enabled = photonView.IsMine;
+
         animator = ambrose.GetComponent<Animator>();
         animator.SetFloat("xSpeed", 0);
         animator.SetFloat("ySpeed", 0);

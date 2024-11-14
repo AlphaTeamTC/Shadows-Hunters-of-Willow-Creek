@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class AmbMoveController : MonoBehaviour
+public class AmbMoveController : MonoBehaviourPunCallbacks
 {
 
     [Header("References")]
@@ -17,6 +18,8 @@ public class AmbMoveController : MonoBehaviour
 
     void Start()
     {
+        enabled = photonView.IsMine;
+
         characterController = GetComponentInParent<CharacterController>();
     }
 
