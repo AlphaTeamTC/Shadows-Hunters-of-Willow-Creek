@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="95b8a1f6-4b50-4404-aabe-78cb00884583" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Village Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Village Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ShopMenu",
+    "git-widget-placeholder": "Shop-and-Inventory-UI",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,6 +94,7 @@
       <workItem from="1731282414162" duration="9547000" />
       <workItem from="1731339141770" duration="3701000" />
       <workItem from="1731429475510" duration="5962000" />
+      <workItem from="1731509678140" duration="7822000" />
     </task>
     <servers />
   </component>

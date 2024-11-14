@@ -1,5 +1,7 @@
 using UnityEditor;
 using UnityEngine;
+using Inventory;
+using Items;
 
 public class AmbInputController : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class AmbInputController : MonoBehaviour
     [SerializeField] private AmbMoveController pMC;
     [SerializeField] private AmbAnimationController pAC;
     [SerializeField] private AmbStatistics pS;
+    [SerializeField] private PlayerInventory inv; 
 
     
     private CharacterController characterController;
@@ -136,6 +139,9 @@ public class AmbInputController : MonoBehaviour
             pAC.setAnimation(getMovingValue());
             momentumSpeed = 1f;
         }
+        
+    
+        
     
     }
 
