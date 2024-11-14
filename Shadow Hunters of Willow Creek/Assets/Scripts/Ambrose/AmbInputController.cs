@@ -2,6 +2,8 @@ using Photon.Pun;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using Inventory;
+using Items;
 
 public class AmbInputController : MonoBehaviourPunCallbacks
 {
@@ -15,6 +17,7 @@ public class AmbInputController : MonoBehaviourPunCallbacks
     [SerializeField] private AmbMoveController pMC;
     [SerializeField] private AmbAnimationController pAC;
     [SerializeField] private AmbStatistics pS;
+    [SerializeField] private PlayerInventory inv; 
 
     
     private CharacterController characterController;
@@ -147,6 +150,9 @@ public class AmbInputController : MonoBehaviourPunCallbacks
             pAC.setAnimation(getMovingValue());
             momentumSpeed = 1f;
         }
+        
+    
+        
     
     }
 
