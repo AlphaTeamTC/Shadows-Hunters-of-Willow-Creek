@@ -1,6 +1,7 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class AmbStatistics : MonoBehaviour
+public class AmbStatistics : MonoBehaviourPunCallbacks
 {
     [SerializeField] private HealthBar healthbar;
     [SerializeField] private EnergyBar energybar;
@@ -74,7 +75,10 @@ public class AmbStatistics : MonoBehaviour
 
     // Sets the maximum health and energy values
     // Sets the starting values
-    public void Start(){
+    public void Start()
+    {
+        enabled = photonView.IsMine;
+
         currentHealth = maxHealth;
         currentEnergy = 0;
         healthbar.SetMaxHealth(maxHealth);
