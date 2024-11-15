@@ -39,21 +39,18 @@ public class AmbAnimationController : MonoBehaviourPunCallbacks
     public void Crouching()
     {
         animator.SetBool("isCrouching", true);
-
     }
 
     // Set the crouching animation false
     public void Standing()
     {
         animator.SetBool("isCrouching", false);
-
     }
 
     // Set the jumping animation
     public void Jump()
     {
         animator.SetBool("isJumping", true);
-
     }
 
     // Set the damage reaction animation
@@ -66,5 +63,3 @@ public class AmbAnimationController : MonoBehaviourPunCallbacks
         animator.SetBool("isDead", true);
     }
 }
-
-
