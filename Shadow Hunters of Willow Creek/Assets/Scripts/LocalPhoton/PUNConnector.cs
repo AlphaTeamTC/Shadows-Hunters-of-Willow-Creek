@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CharacterSelector.UI;
-
-//using LocalPhoton.MainMenu;
 using MainMenu.UI;
+using MainMenu.UI.Settings;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace LocalPhoton
             // UI manager events
             UIManager.Instance.OnCreateRoomEvent += CreateRoom;
             UIManager.Instance.OnLeaveRoomEvent += LeaveRoom;
-            //UIManager.Instance.OnSubmitNicknameEvent += SubmitNickname;
+            UIManager.Instance.OnSubmitNicknameEvent += SubmitNickname;
 
             // PunRoomButtonInfo events
             PUNRoomButtonInfo.OnJoinRoomEvent += JoinRoom;
@@ -44,7 +43,7 @@ namespace LocalPhoton
         {
             UIManager.Instance.OnCreateRoomEvent -= CreateRoom;
             UIManager.Instance.OnLeaveRoomEvent -= LeaveRoom;
-            //UIManager.Instance.OnSubmitNicknameEvent -= SubmitNickname;
+            UIManager.Instance.OnSubmitNicknameEvent -= SubmitNickname;
 
             PUNRoomButtonInfo.OnJoinRoomEvent -= JoinRoom;
 
@@ -92,9 +91,6 @@ namespace LocalPhoton
         public override void OnJoinedLobby()
         {
             Debug.LogFormat($"*** PUNConnector: Joined lobby!");
-            UIManager.Instance.SetLoadingCanvasGroup(false);
-            UIManager.Instance.SetMainMenuCanvasGroup(true);
-            /*
             string playerName = PlayerData.LoadPlayerData();
             if (!String.IsNullOrEmpty(playerName))
             {
@@ -108,10 +104,6 @@ namespace LocalPhoton
                 UIManager.Instance.SetLoadingCanvasGroup(false);
                 UIManager.Instance.SetPlayerNameCanvasGroup(true);
             }
-            */
-
-            // Assign a random nickname to the player
-            PhotonNetwork.NickName = "Player" + UnityEngine.Random.Range(0, 1000).ToString("0000");
         }
 
         /// <summary>
@@ -120,14 +112,12 @@ namespace LocalPhoton
         /// <param name="nickname"></param>
         public void SubmitNickname(string nickname)
         {
-            /*
             if (String.IsNullOrEmpty(nickname))
             {
                 Debug.LogFormat($"*** PUNConnector: Nickname is empty!");
                 UIManager.Instance.SetErrorCanvasGroup(true, "Nickname is empty!");
                 return;
             }
-            
 
             PlayerData.SavePlayerData(nickname);
 
@@ -135,7 +125,6 @@ namespace LocalPhoton
             Debug.LogFormat($"*** PUNConnector: Player nickname set to {PhotonNetwork.NickName}!");
 
             UIManager.Instance.SetPlayerNameCanvasGroup(false);
-            */
             UIManager.Instance.SetMainMenuCanvasGroup(true);
         }
 
