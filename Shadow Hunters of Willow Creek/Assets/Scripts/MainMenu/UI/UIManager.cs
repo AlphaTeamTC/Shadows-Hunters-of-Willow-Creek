@@ -15,11 +15,16 @@ namespace MainMenu.UI
         [SerializeField, Space] private CanvasGroup _roomOptionsCanvasGroup;
         [SerializeField, Space] private CanvasGroup _createRoomCanvasGroup;
         [SerializeField] private TMP_InputField _createdRoomNameInputField;
+        [SerializeField, Space] private CanvasGroup _playerNameCanvasGroup;
+        [SerializeField] private TMP_InputField _playerNameInputField;
         [SerializeField, Space] private CanvasGroup _roomListCanvasGroup;
         [SerializeField, Space] private CanvasGroup _loadingCanvasGroup;
         [SerializeField] private TMP_Text _loadingText;
         [SerializeField, Space] private CanvasGroup _errorCanvasGroup;
         [SerializeField] private TMP_Text _errorText;
+        [SerializeField, Space] private GameObject _buttonSubmitNickname;
+
+        public GameObject ButtonSubmitNickname => _buttonSubmitNickname;
 
         // Singletoning the UIManager
         private static UIManager _instance;
@@ -42,6 +47,9 @@ namespace MainMenu.UI
         public delegate void OnLeaveRoom();
         public OnLeaveRoom OnLeaveRoomEvent;
 
+        public delegate void OnSubmitNickname(string playerName);
+        public OnSubmitNickname OnSubmitNicknameEvent;
+
         public void CanvasSetup()
         {
             FadeCanvasGroup(_gameTitleCanvasGroup, true);
@@ -50,6 +58,7 @@ namespace MainMenu.UI
             FadeCanvasGroup(_roomOptionsCanvasGroup, false);
             FadeCanvasGroup(_createRoomCanvasGroup, false);
             FadeCanvasGroup(_roomListCanvasGroup, false);
+            FadeCanvasGroup(_playerNameCanvasGroup, false);
             FadeCanvasGroup(_loadingCanvasGroup, false);
             FadeCanvasGroup(_errorCanvasGroup, false);
         }
@@ -129,6 +138,15 @@ namespace MainMenu.UI
         }
 
         /// <summary>
+        /// Sets the player name canvas group.
+        /// </summary>
+        /// <param name="active"></param>
+        public void SetPlayerNameCanvasGroup(bool active)
+        {
+            FadeCanvasGroup(_playerNameCanvasGroup, active);
+        }
+
+        /// <summary>
         /// Sets the room list canvas group.
         /// </summary>
         /// <param name="active"></param>
@@ -187,6 +205,20 @@ namespace MainMenu.UI
         public void ButtonCloseErrorCanvasGroup()
         {
             FadeCanvasGroup(_errorCanvasGroup, false);
+        }
+
+        /// <summary>
+        /// Action when the submit nickname button is clicked
+        /// </summary>
+        public void ButtonSubmitNicknameClicked()
+        {
+            if (String.IsNullOrEmpty(_playerNameInputField.text))
+            {
+                Debug.LogErrorFormat($"*** Player name is empty!");
+                return;
+            }
+
+            OnSubmitNicknameEvent?.Invoke(_playerNameInputField.text);
         }
 
         /// <summary>
