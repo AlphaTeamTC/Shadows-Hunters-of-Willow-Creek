@@ -48,11 +48,6 @@ public class AmbInputController : MonoBehaviourPunCallbacks
     {
         enabled = photonView.IsMine;
 
-        // Set the cursor to be invisible
-        Cursor.visible = false;
-        // Lock the cursor to the center of the screen
-        Cursor.lockState = CursorLockMode.Locked;
-
         // Get other scripts
         characterController = GetComponentInParent<CharacterController>();
         pMC = GetComponent<AmbMoveController>();
@@ -74,7 +69,6 @@ public class AmbInputController : MonoBehaviourPunCallbacks
 
     void Update()
     {
-
         // Receives the inputs from the WASD
         InputManagement();
 
@@ -115,7 +109,6 @@ public class AmbInputController : MonoBehaviourPunCallbacks
             isCrouching = false;
         }
 
-
         // If the character is falling
         if (!characterController.isGrounded && !isGroundNear)
         {
@@ -150,14 +143,7 @@ public class AmbInputController : MonoBehaviourPunCallbacks
             pAC.setAnimation(getMovingValue());
             momentumSpeed = 1f;
         }
-        
-    
-        
-    
     }
-
-
-    // Functions
 
     // Receives values from the WASD
     private void InputManagement()
@@ -213,7 +199,8 @@ public class AmbInputController : MonoBehaviourPunCallbacks
     }
 
     // If the character takes damage it should update data and play animation
-    public void TakeDamage(float damage){
+    public void TakeDamage(float damage)
+    {
         if(pS.Damage(damage) <= 0)
         {
             pAC.Die();
@@ -226,11 +213,13 @@ public class AmbInputController : MonoBehaviourPunCallbacks
     }
 
     // If the character heals the statistics should update
-    public void Heal(float health){
+    public void Heal(float health)
+    {
         pS.Heal(health);
     }
 
-    private void checkForInteractables(){
+    private void checkForInteractables()
+    {
         // Get the player's position
         interactSource = transform.position + new Vector3(0,1,0);
 
@@ -249,7 +238,3 @@ public class AmbInputController : MonoBehaviourPunCallbacks
         }
     }
 }
-
-
-
-

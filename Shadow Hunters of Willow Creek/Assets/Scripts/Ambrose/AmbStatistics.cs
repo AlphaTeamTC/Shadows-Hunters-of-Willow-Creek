@@ -72,7 +72,6 @@ public class AmbStatistics : MonoBehaviourPunCallbacks
         set { resistence = value; }
     }
 
-
     // Sets the maximum health and energy values
     // Sets the starting values
     public void Start()
@@ -168,6 +167,4 @@ public class AmbStatistics : MonoBehaviourPunCallbacks
         currentEnergy = 0;
         energybar.SetEnergy(currentEnergy);
     }
-
-    
 }

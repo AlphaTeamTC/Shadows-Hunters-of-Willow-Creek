@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AmbMoveController : MonoBehaviourPunCallbacks
 {
-
     [Header("References")]
     public Transform playerObj;
     private CharacterController characterController;
@@ -22,8 +21,6 @@ public class AmbMoveController : MonoBehaviourPunCallbacks
 
         characterController = GetComponentInParent<CharacterController>();
     }
-
-    // Functions
 
     // Moves the Character Controller in the direction and strengt
     public void Movement(float charSpeed, float actionSpeed, Vector3 direction, RaycastHit underThePlayer)
@@ -52,7 +49,6 @@ public class AmbMoveController : MonoBehaviourPunCallbacks
 
         // The player moves
         characterController.Move(movementDirection * Time.deltaTime);
-
     }
 
     // The character rotates on the given direction, usually the forward of the model 
@@ -93,6 +89,4 @@ public class AmbMoveController : MonoBehaviourPunCallbacks
 
         return false;
     }
-
-
 }
