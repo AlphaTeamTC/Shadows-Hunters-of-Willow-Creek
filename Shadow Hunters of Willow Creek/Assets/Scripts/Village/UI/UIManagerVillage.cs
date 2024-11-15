@@ -13,6 +13,7 @@ namespace Village.UI
         [SerializeField, Space] private CanvasGroup _inventoryCanvasGroup;
 
         private GameObject _camera;
+        private GameObject _player;
 
         private StoreProximity _storeProximity;
 
@@ -39,6 +40,9 @@ namespace Village.UI
 
         private void Update()
         {
+            // Find the nearest player with the player tag
+            _player = _storeProximity.player;
+
             if (_storeProximity.isNearStore)
             {
                 // If the player is near the store, show the store UI by pressing the E key
@@ -62,6 +66,9 @@ namespace Village.UI
                     // Free the cursor
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
+
+                    // Get the player's character controller
+                    _player.GetComponent<CharacterController>().enabled = false;
                 }
             }
         }
@@ -78,11 +85,11 @@ namespace Village.UI
             _storeCamera.SetActive(false);
 
             _camera.SetActive(true);
-        }
 
-        public void TestButtonClicked()
-        {
-            Debug.Log("Test button clicked!");
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            _player.GetComponent<CharacterController>().enabled = true;
         }
 
         /// <summary>
