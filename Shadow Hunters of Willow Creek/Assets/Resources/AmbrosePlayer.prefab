@@ -1631,6 +1631,7 @@ MonoBehaviour:
   pMC: {fileID: 4791168627896266284}
   pAC: {fileID: 1659855905368146033}
   pS: {fileID: 3200254334539027880}
+  inv: {fileID: 0}
   playerCam: {fileID: 0}
   isFalling: 0
   doingAFullAction: 0

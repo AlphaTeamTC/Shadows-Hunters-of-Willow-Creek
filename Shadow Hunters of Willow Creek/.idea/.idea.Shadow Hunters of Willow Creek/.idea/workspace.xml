@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="95b8a1f6-4b50-4404-aabe-78cb00884583" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Shadow Hunters of Willow Creek/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AIMP Terrains/VillageTerain.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AIMP Terrains/VillageTerain.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AIMP Village/FreeBarrowsWagons/models/Materials/hay.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AIMP Village/FreeBarrowsWagons/models/Materials/hay.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Training Ground/Training Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Training Ground/Training Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/AmbrosePlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/AmbrosePlayer.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Village Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Village Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/PlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +21,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@1.1.5/Runtime/NavMeshSurface.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -28,7 +36,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Shop-and-Inventory-UI",
+    "git-widget-placeholder": "NPCS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,6 +103,7 @@
       <workItem from="1731339141770" duration="3701000" />
       <workItem from="1731429475510" duration="5962000" />
       <workItem from="1731509678140" duration="7822000" />
+      <workItem from="1731627629540" duration="2704000" />
     </task>
     <servers />
   </component>
